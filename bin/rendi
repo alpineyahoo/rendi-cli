@@ -1,1 +1,32 @@
 #!/usr/bin/env zsh
+
+# 必要なコマンド:
+# yt-dlp
+# sponge
+# fzf
+
+# pbpaste |
+# read URL &&
+
+mkdir -p "$HOME/.config/rendi"
+touch "$HOME/.config/rendi/config.json"
+
+rendi-list(){
+  yt-dlp --skip-download --list-formats "$(pbpaste)" &&
+  yt-dlp --skip-download --print urls "$(pbpaste)";
+}
+
+rendi-convert(){
+  yt-dlp --skip-download --print urls "$(pbpaste)" |
+  sponge |
+  fzf;
+}
+
+[[ -z "$(pbpaste)" ]] &&
+echo "Clipboard is empty. Copy URL first." &&
+exit 0 ||
+case "$1" in
+  "list" ) rendi-list ;;
+  "convert" ) rendi-convert ;;
+  * ) echo "Set subcommand: list, convert" ;;
+esac
