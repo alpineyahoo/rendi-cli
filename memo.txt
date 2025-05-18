@@ -11,3 +11,5 @@ m3u8からffmpegでmp4にするやり方調べる
 API Token のlocation ~/.config/rendi/config ?
 複数のTokenからランダムに選択
 latestなAPIリクエストに利用したtokenの履歴(index)を記録する場所 ~/.cache/rendi/latest-request-token ?
+
+ffmpeg -i {M3U8形式のURL} -c copy output.mp4
