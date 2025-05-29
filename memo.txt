@@ -1,15 +1,14 @@
-クリップボードがURLか判定する
-  クリップボードが空 or URL以外のときエラー
-
 サブコマンドとして
 - list
 - convert
   - m3u8 -> mp4
 
-m3u8からffmpegでmp4にするやり方調べる
+m3u8からffmpegでmp4にするやり方: ffmpeg -i {M3U8形式のURL} -c copy output.mp4
 
-API Token のlocation ~/.config/rendi/config ?
-複数のTokenからランダムに選択
-latestなAPIリクエストに利用したtokenの履歴(index)を記録する場所 ~/.cache/rendi/latest-request-token ?
+API Token のlocation ~/.config/rendi/config.json ?
+複数のTokenからjqでランダムに選択
+# latestなAPIリクエストに利用したtokenの履歴(index)を記録する場所 ~/.cache/rendi/latest-request-token ?
+最新のAPIリクエストに利用したtokenとリクエスト内容の履歴を ~/Library/Logs/rendi ディレクトリ内に記録？
+それとも ~/Library/Application\ Support/rendi で monorepo?
 
-ffmpeg -i {M3U8形式のURL} -c copy output.mp4
+jsonnet 使う？
